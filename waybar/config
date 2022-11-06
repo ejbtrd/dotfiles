@@ -1,0 +1,71 @@
+{
+    "layer": "top",
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": ["sway/window"],
+    "modules-right": [
+        "network",
+        "pulseaudio#sound",
+        "pulseaudio#icon",
+        "battery",
+        "tray",
+        "clock"
+    ],
+    "sway/window": { 
+        "max-length": 50
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null"
+    },
+    "network": {
+        "format-wifi": "{essid}",
+        "format-alt": "down: {bandwidthDownBits} up: {bandwidthUpBits}",
+        "interval": 1
+    },
+    "pulseaudio#sound": {
+        "format": "{volume}",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+    "pulseaudio#icon": {
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
+        "format-source-muted": "",
+        "on-click": "pactl set-sink-mute 0 toggle",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+    "battery": { 
+        "format": "{capacity}%" 
+    },
+    "clock": {  
+        "format": "{:%a, %d. %b %H:%M:%S}",
+        "interval": 1
+    }
+}
