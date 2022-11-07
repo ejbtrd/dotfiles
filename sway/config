@@ -20,6 +20,11 @@ set $term foot
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
+# WOB
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -201,6 +206,21 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Custom keybinds:
+#
+    # Media keys:
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+
+    # Screenshots
+    bindsym $mod+Shift+s exec grimshot copy area    # Area
+    bindsym Print exec grimshot copy screen         # Whole screen
+    bindsym Alt+Print exec grimshot copy active     # Current window
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
@@ -211,5 +231,8 @@ bar {
 
 # Disable windows title bars
 default_border none
+
+# Clipman
+exec wl-paste -t text --watch clipman store --no-persist
 
 include /etc/sway/config.d/*
