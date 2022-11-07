@@ -75,7 +75,7 @@ window#waybar.hidden {
 }
 
 #battery.charging, #battery.plugged {
-    background-color: rgba(38, 166, 91, 0.5);
+    background-color: rgba(56, 255, 155, 0.5);
 }
 
 @keyframes blink {
@@ -113,8 +113,7 @@ label:focus {
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
-    color: #2a5c45;
+    background-color: rgba(102, 204, 153, 0.5);
 }
 
 #temperature.critical {
