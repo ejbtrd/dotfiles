@@ -1,16 +1,10 @@
-@import "/etc/xdg/waybar/style.css";
-
 * {
     font-size: 13px;   
     font-family: "FontAwesome", "Red Hat Mono", monospace;
 }
 
-.horizontal {
-    padding: 4px;
-}
-
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
+    background-color: rgba(43, 48, 59, 0.6);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -20,73 +14,68 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
-    border: none;
-    border-radius: 0;
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 6px;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+.modules-center,
+.modules-right {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+#workspaces,
+#custom-media {
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+#workspaces {
+    margin-right: 6px;
+}
+
+#workspaces button {
+    padding: 0 4px;
+    background-color: transparent;
+    color: #ffffff;
+    border-radius: 6px;
+}
+
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+	box-shadow: none;
+	text-shadow: none;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
 }
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
 }
 
-#mode {
-    background-color: #64727D;
-}
-
-#clock,
-#battery,
 #cpu,
 #memory,
-#disk,
 #temperature,
-#network,
 #pulseaudio,
-#custom-media,
+#network,
+#battery,
 #tray,
-#mode {
-    padding: 0 10px;
+#clock {
+    padding: 0 6px;
     color: #ffffff;
 }
 
-#window,
-#workspaces {
+#window {
     margin: 0 4px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    background-color: rgba(38, 166, 91, 0.5);
 }
 
 @keyframes blink {
@@ -97,10 +86,10 @@ window#waybar.hidden {
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    background-color: rgba(245, 60, 60, 0.5);
     color: #ffffff;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -110,57 +99,22 @@ label:focus {
     background-color: #000000;
 }
 
-#cpu {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
-#memory {
-    background-color: #9b59b6;
-}
-
-#disk {
-    background-color: #964B00;
-}
-
-#backlight {
-    background-color: #90b1b1;
-}
-
-#network {
-    background-color: #2980b9;
-}
-
 #network.disconnected {
     background-color: #f53c3c;
 }
 
-#pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
-}
-
 #pulseaudio.muted {
-    background-color: #90b1b1;
     color: #2a5c45;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
     min-width: 100px;
+    padding: 0 12px;
 }
 
 #custom-media.custom-spotify {
     background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-#temperature {
-    background-color: #f0932b;
+    color: #2a5c45;
 }
 
 #temperature.critical {
@@ -168,7 +122,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    padding-left: 0;
 }
 
 #tray > .passive {
