@@ -13,6 +13,7 @@
         "memory",
         "temperature",
         "pulseaudio",
+        "bluetooth",
         "network",
         "battery",
         //"tray",
