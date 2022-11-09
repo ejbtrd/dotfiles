@@ -25,6 +25,24 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
+# Swaylock
+set $lock 'swaylock --screenshots \
+            --clock --indicator \
+            --indicator-radius 100 \
+            --indicator-thickness 7 \
+            --effect-blur 7x5 \
+            --effect-vignette 0.5:0.5 \
+            --ring-color 000000 \
+            --key-hl-color 880033 \
+            --line-color 00000000 \
+            --inside-color 00000088 \
+            --separator-color 00000000 '
+
+set $lockidle "$lock --grace 5 --fade-in 10"
+
+# Lock on closing lid
+bindswitch --reload --locked lid:on exec $lock
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -53,10 +71,10 @@ output eDP1 pos 1920 0
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 exec swayidle -w \
-        timeout 300 'swaylock -f -c 000000' \
+        timeout 300 $lockidle \
         timeout 600 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-        before-sleep 'swaylock -f -c 000000'
+        before-sleep $lockidle
 
 ### Input configuration
 #
@@ -234,6 +252,9 @@ bindsym $mod+r mode "resize"
     bindsym Print exec grimshot copy screen         # Whole screen
     bindsym Alt+Print exec grimshot copy active     # Current window
 
+    # Swaylock
+    unbindsym $mod+l
+    bindsym $mod+l exec $lock
 #
 # Status Bar:
 #

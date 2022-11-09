@@ -7,7 +7,6 @@ for f in "${files[@]}"
 do
    echo "Updating $f"
    cp ~/.config/$f $f
-
    git add "$f"
 done
 
