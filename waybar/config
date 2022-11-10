@@ -2,7 +2,6 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "sway/scratchpad",
         "custom/media"
     ],
     "modules-center": [
@@ -16,7 +15,6 @@
         "bluetooth",
         "network",
         "battery",
-        //"tray",
         "clock"
     ],
     "sway/workspaces": {

@@ -71,10 +71,10 @@ output eDP1 pos 1920 0
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 exec swayidle -w \
-        timeout 300 $lockidle \
+        timeout 300 $lock \
         timeout 600 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-        before-sleep $lockidle
+        before-sleep $lock
 
 ### Input configuration
 #
@@ -269,5 +269,9 @@ default_border none
 
 # Clipman
 exec wl-paste -t text --watch clipman store --no-persist
+
+# Run some of the apps as floating by default
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="telegramdesktop"] floating enable
 
 include /etc/sway/config.d/*

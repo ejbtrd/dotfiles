@@ -103,10 +103,6 @@ label:focus {
     background-color: #f53c3c;
 }
 
-#pulseaudio.muted {
-    color: #2a5c45;
-}
-
 #custom-media {
     min-width: 100px;
     padding: 0 12px;
