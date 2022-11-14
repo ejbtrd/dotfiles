@@ -19,6 +19,8 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
+for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+set $menu exec $term --class=launcher -e sway-launcher-desktop
 
 # WOB
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
@@ -46,7 +48,9 @@ bindswitch --reload --locked lid:on exec $lock
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/default.png fill
+#output * bg /usr/share/backgrounds/default.png fill
+ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
+
 #
 # Example configuration:
 #
@@ -90,8 +94,13 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout "us,pl"
+input type:keyboard {
+    xkb_layout "pl,us"
+}
+
+input type:pointer {
+    accel_profile "flat"
+    pointer_accel 0
 }
 
 input type:touchpad {
@@ -255,6 +264,9 @@ bindsym $mod+r mode "resize"
     # Swaylock
     unbindsym $mod+l
     bindsym $mod+l exec $lock
+
+    # Sway-prop
+    bindsym  $mod+i exec $HOME/.config/sway/sway-prop
 #
 # Status Bar:
 #
@@ -265,13 +277,24 @@ bar {
 }
 
 # Disable windows title bars
-default_border none
+default_border none 1
+default_floating_border normal 1
+
+smart_borders on
+hide_edge_borders both
 
 # Clipman
 exec wl-paste -t text --watch clipman store --no-persist
 
 # Run some of the apps as floating by default
-for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="telegramdesktop"] floating enable
+for_window [app_id="alacritty"]			floating enable
+for_window [app_id="pavucontrol"]		floating enable
+for_window [app_id="telegramdesktop"]		floating enable
+for_window [app_id="org.gnome.Nautilus"]	floating enable
+for_window [app_id="lutris"]			floating enable
+
+# Assign Lutris & games to Workspace 3
+#assign [name="Wine System Tray"]		workspace number 3
+#assign [name="League of Legends"]		workspace number 3
 
 include /etc/sway/config.d/*
