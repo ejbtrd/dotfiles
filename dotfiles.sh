@@ -13,23 +13,44 @@ files=(
     ".config/mako/config"
 )
 
-if [ "$1" == "deploy" ]; then
-    echo "WARNING: This will overwrite your local files!"
+function usage() {
+    echo "Usage: $0 [-d] [-u]"
+    exit 0
+}
 
-    for i in {5..1}; do
-        printf "\033[0K\rProceeding in $i..."
-        sleep 1
-    done
+function deploy() {
+    printf "WARNING: This will overwrite your local files! Continue? "
+    read confirmation
+    case "$confirmation" in
+        Y|y) switch;;
+        N|n) exit;;
+    esac
+
+    # select yn in "Yes" "No"; do
+    #     case $yn in
+    #         Yes ) echo "yes"; break;;
+    #         No ) echo "no"; break;;
+    #     esac
+    # done
 
     printf "\n"
 
     for f in "${files[@]}"
     do
         echo "Deploying $f"
+
+        # Create directory, if it doesn't exist
+        FILE_DIR="$HOME/$(sed 's|\(.*\)/.*|\1|' <<< $f)"
+        [ -d "$FILE_DIR" ] || mkdir -p "$FILE_DIR" &> /dev/null
+
         cp $f ~/$f
-        sleep 0.25
     done
-elif [ "$1" == "update" ]; then
+
+    echo "Restarting sway..."
+    sway reload > /dev/null
+}
+
+function update() {
     for f in "${files[@]}"
     do
         echo "Updating $f"
@@ -39,6 +60,13 @@ elif [ "$1" == "update" ]; then
 
     git commit -m "dotfiles: Automated sync :robot:"
     git push
-else
-    echo "Please specify action: deploy, update"
-fi
+}
+
+while getopts ":du" o; do
+    case "${o}" in
+        d) deploy;;
+        u) update;;
+        *) usage;;
+    esac
+done
+shift $((OPTIND-1))
