@@ -43,7 +43,7 @@ function deploy() {
         FILE_DIR="$HOME/$(sed 's|\(.*\)/.*|\1|' <<< $f)"
         [ -d "$FILE_DIR" ] || mkdir -p "$FILE_DIR" &> /dev/null
 
-        cp $f ~/$f
+        cp $f $HOME/$f
     done
 
     echo "Restarting sway..."
