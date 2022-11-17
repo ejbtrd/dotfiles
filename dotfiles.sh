@@ -10,6 +10,7 @@ files=(
     ".config/alacritty/alacritty.yml"
     ".gitconfig"
     ".config/backgrounds/wallpaper.png"
+    ".config/mako/config"
 )
 
 if [ "$1" == "deploy" ]; then

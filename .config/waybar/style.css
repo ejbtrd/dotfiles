@@ -3,11 +3,19 @@
     font-family: "FontAwesome", "Red Hat Mono", monospace;
 }
 
+
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.6);
+    background-color: transparent;
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
+}
+
+window#waybar > box {
+    background-color: rgba(43, 48, 59, 0.75);
+    margin: 10px;
+    margin-bottom: 0px;
+    border-radius: 8px;
 }
 
 window#waybar.hidden {
@@ -44,9 +52,13 @@ window#waybar.hidden {
     border-radius: 6px;
 }
 
+#workspaces button.persistent {
+    background-color: transparent;
+}
+
 #workspaces button:hover {
-	box-shadow: none;
-	text-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
 }
 
 #workspaces button.focused {
@@ -56,6 +68,10 @@ window#waybar.hidden {
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+}
+
+#window {
+    margin: 0 4px;
 }
 
 #cpu,
@@ -68,10 +84,6 @@ window#waybar.hidden {
 #clock {
     padding: 0 6px;
     color: #ffffff;
-}
-
-#window {
-    margin: 0 4px;
 }
 
 #battery.charging, #battery.plugged {

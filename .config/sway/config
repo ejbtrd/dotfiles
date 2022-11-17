@@ -48,8 +48,7 @@ bindswitch --reload --locked lid:on exec $lock
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/default.png fill
- output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
+output * bg ~/.config/backgrounds/wallpaper.png fill
 
 #
 # Example configuration:
@@ -60,6 +59,10 @@ bindswitch --reload --locked lid:on exec $lock
 
 output HDMI-A-1 pos 0 0
 output eDP1 pos 1920 0
+
+
+# Autostart
+exec mako
 
 ### Idle configuration
 #
@@ -222,31 +225,6 @@ input type:touchpad {
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 #
-# Resizing containers:
-#
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-#
 # Custom keybinds:
 #
     # Media keys:
@@ -267,6 +245,10 @@ bindsym $mod+r mode "resize"
 
     # Sway-prop
     bindsym  $mod+i exec $HOME/.config/sway/sway-prop
+
+    # Notifications
+    bindsym Control+Space exec makoctl dismiss
+    bindsym Control+Shift+Space exec makoctl dismiss --all
 #
 # Status Bar:
 #
@@ -277,21 +259,22 @@ bar {
 }
 
 # Disable windows title bars
-default_border none 1
-default_floating_border normal 1
-
-smart_borders on
-hide_edge_borders both
+default_border none
+default_floating_border normal
+hide_edge_borders smart
+gaps inner 10
 
 # Clipman
 exec wl-paste -t text --watch clipman store --no-persist
 
 # Run some of the apps as floating by default
-for_window [app_id="alacritty"]			floating enable
-for_window [app_id="pavucontrol"]		floating enable
-for_window [app_id="telegramdesktop"]		floating enable
-for_window [app_id="org.gnome.Nautilus"]	floating enable
-for_window [app_id="lutris"]			floating enable
+for_window [app_id="alacritty"]             floating enable
+for_window [app_id="pavucontrol"]           floating enable
+for_window [app_id="telegramdesktop"]       floating enable
+for_window [app_id="org.gnome.Nautilus"]    floating enable
+for_window [app_id="lutris"]                floating enable
+for_window [app_id="org.multimc.MultiMC"]   floating enable
+for_window [app_id="blueman-manager"]       floating enable
 
 # Assign Lutris & games to Workspace 3
 #assign [name="Wine System Tray"]		workspace number 3

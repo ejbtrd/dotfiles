@@ -1,0 +1,9 @@
+font=Red Hat Mono Normal 10
+background-color=#2B303BE6
+text-color=#FFFFFF
+border-color=#2B303BCC
+default-timeout=5000
+max-icon-size=32
+
+[urgency=critical]
+text-color=#CB4B16
