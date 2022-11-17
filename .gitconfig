@@ -1,0 +1,19 @@
+[user]
+	name = Bartłomiej Rudecki
+	email = ejbtrd@gmail.com
+[color]
+	ui = auto
+[core]
+	editor = nano
+[alias]
+	cp = cherry-pick
+	c = commit
+	f = fetch
+	s = status
+	p = push
+	l = log
+	a = add
+[url "ssh://git@github.com/"]
+	pushInsteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+	pushInsteadOf = https://gitlab.com/

@@ -1,7 +1,7 @@
 #!/bin/bash
 # dotfiles manager
 
-files=("sway/config" "sway/sway-prop" "waybar/config" "waybar/style.css" "waybar/mediaplayer.py" "alacritty/alacritty.yml")
+files=(".config/sway/config" ".config/sway/sway-prop" ".config/waybar/config" ".config/waybar/style.css" ".config/waybar/mediaplayer.py" ".config/alacritty/alacritty.yml" ".gitconfig")
 
 if [ "$1" == "deploy" ]; then
     echo "WARNING: This will overwrite your local files!"
@@ -16,24 +16,19 @@ if [ "$1" == "deploy" ]; then
     for f in "${files[@]}"
     do
         echo "Deploying $f"
-        cp $f ~/.config/$f
+        cp $f ~/$f
         sleep 0.25
     done
 elif [ "$1" == "update" ]; then
     for f in "${files[@]}"
     do
         echo "Updating $f"
-        cp ~/.config/$f $f
-    done
-elif [ "$1" == "push" ]; then
-    for f in "${files[@]}"
-    do
-        echo "Adding $f"
+        cp ~/$f $f
         git add "$f"
     done
 
-    git commit -m "dotfiles: Automated sync"
+    git commit -m "dotfiles: Automated sync :robot:"
     git push
 else
-    echo "Please specify action: deploy, update, push"
+    echo "Please specify action: deploy, update"
 fi
