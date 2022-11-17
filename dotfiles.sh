@@ -1,7 +1,16 @@
 #!/bin/bash
 # dotfiles manager
 
-files=(".config/sway/config" ".config/sway/sway-prop" ".config/waybar/config" ".config/waybar/style.css" ".config/waybar/mediaplayer.py" ".config/alacritty/alacritty.yml" ".gitconfig")
+files=(
+    ".config/sway/config"
+    ".config/sway/sway-prop"
+    ".config/waybar/config"
+    ".config/waybar/style.css"
+    ".config/waybar/mediaplayer.py"
+    ".config/alacritty/alacritty.yml"
+    ".gitconfig"
+    ".config/backgrounds/wallpaper.png"
+)
 
 if [ "$1" == "deploy" ]; then
     echo "WARNING: This will overwrite your local files!"
