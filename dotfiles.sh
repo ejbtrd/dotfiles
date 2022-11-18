@@ -19,7 +19,7 @@ function usage() {
 }
 
 function deploy() {
-    printf "WARNING: This will overwrite your local files! Continue? "
+    printf "WARNING: This will overwrite your local files! Continue? (y/n) "
     read confirmation
     case "$confirmation" in
         Y|y) switch;;
