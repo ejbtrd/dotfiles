@@ -74,6 +74,7 @@ window#waybar.hidden {
     margin: 0 4px;
 }
 
+#custom-media,
 #cpu,
 #memory,
 #temperature,
