@@ -245,6 +245,10 @@ input type:touchpad {
     # Notifications
     bindsym Control+Space exec makoctl dismiss
     bindsym Control+Shift+Space exec makoctl dismiss --all
+
+    # PowerOff
+    bindsym $mod+Shift+P exec --no-startup-id systemctl poweroff -i, mode "default"
+
 #
 # Status Bar:
 #
