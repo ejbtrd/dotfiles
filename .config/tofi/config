@@ -1,0 +1,11 @@
+font = "/usr/share/fonts/redhat/RedHatMono-Regular.ttf"
+font-size = 14
+text-color = #ffffffbf
+background-color = #111a
+outline-width = 0
+border-width = 2
+border-color = #2b303bbf
+width = 600
+height = 800
+corner-radius = 12
+selection-color = #676c77f2

@@ -18,9 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
-for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
-set $menu exec $term --class=launcher -e sway-launcher-desktop
+set $menu tofi-drun | xargs swaymsg exec --
 
 # WOB
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
@@ -273,6 +271,7 @@ for_window [app_id="telegramdesktop"]       floating enable
 for_window [app_id="org.gnome.Nautilus"]    floating enable
 for_window [app_id="lutris"]                floating enable
 for_window [app_id="org.multimc.MultiMC"]   floating enable
+for_window [app_id="org.polymc.PolyMC"]     floating enable
 for_window [app_id="blueman-manager"]       floating enable
 for_window [class="Steam"]                  floating enable
 
