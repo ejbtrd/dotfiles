@@ -41,7 +41,9 @@ function deploy() {
 
         # Create directory, if it doesn't exist
         FILE_DIR="$HOME/$(sed 's|\(.*\)/.*|\1|' <<< $f)"
-        [ -d "$FILE_DIR" ] || mkdir -p "$FILE_DIR" &> /dev/null
+        if [ -d "$FILE_DIR" ] && [ !$(grep -q "/" $f) ];then
+            mkdir -p "$FILE_DIR" &> /dev/null
+        fi
 
         cp $f $HOME/$f
     done
