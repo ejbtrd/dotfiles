@@ -267,7 +267,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 # Run some of the apps as floating by default
 for_window [app_id="Alacritty"]             floating enable
 for_window [app_id="pavucontrol"]           floating enable
-for_window [app_id="telegramdesktop"]       floating enable
+for_window [app_id="org.telegram.desktop"]  floating enable
 for_window [app_id="org.gnome.Nautilus"]    floating enable
 for_window [app_id="lutris"]                floating enable
 for_window [app_id="org.multimc.MultiMC"]   floating enable
