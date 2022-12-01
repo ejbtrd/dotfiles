@@ -11,6 +11,7 @@ files=(
     ".gitconfig"
     ".config/backgrounds/wallpaper.png"
     ".config/mako/config"
+    ".config/tofi/config"
 )
 
 function usage() {
