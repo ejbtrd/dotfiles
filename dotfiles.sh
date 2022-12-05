@@ -60,7 +60,7 @@ function update() {
         echo "Updating $f"
 
         # Create directory, if it doesn't exist
-        FILE_DIR="$HOME/$(sed 's|\(.*\)/.*|\1|' <<< $f)"
+        FILE_DIR="$(sed 's|\(.*\)/.*|\1|' <<< $f)"
         if [ -d "$FILE_DIR" ] && [ !$(grep -q "/" $f) ];then
             mkdir -p "$FILE_DIR" &> /dev/null
         fi
