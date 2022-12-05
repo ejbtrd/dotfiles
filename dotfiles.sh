@@ -58,6 +58,13 @@ function update() {
     for f in "${files[@]}"
     do
         echo "Updating $f"
+
+        # Create directory, if it doesn't exist
+        FILE_DIR="$HOME/$(sed 's|\(.*\)/.*|\1|' <<< $f)"
+        if [ -d "$FILE_DIR" ] && [ !$(grep -q "/" $f) ];then
+            mkdir -p "$FILE_DIR" &> /dev/null
+        fi
+
         cp ~/$f $f
         git add "$f"
     done
