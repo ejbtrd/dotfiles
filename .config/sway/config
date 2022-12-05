@@ -268,6 +268,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 for_window [app_id="Alacritty"]             floating enable
 for_window [app_id="pavucontrol"]           floating enable
 for_window [app_id="org.telegram.desktop"]  floating enable
+for_window [app_id="telegramdesktop"]       floating enable
 for_window [app_id="org.gnome.Nautilus"]    floating enable
 for_window [app_id="lutris"]                floating enable
 for_window [app_id="org.multimc.MultiMC"]   floating enable
@@ -280,3 +281,4 @@ for_window [class="Steam"]                  floating enable
 #assign [name="League of Legends"]		workspace number 3
 
 include /etc/sway/config.d/*
+include '$HOME/.config/sway/`uname -n`/config'
