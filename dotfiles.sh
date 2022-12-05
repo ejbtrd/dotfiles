@@ -44,7 +44,7 @@ function deploy() {
 
         # Create directory, if it doesn't exist
         FILE_DIR="$HOME/$(sed 's|\(.*\)/.*|\1|' <<< $f)"
-        if [ -d "$FILE_DIR" ] && [ !$(grep -q "/" $f) ];then
+        if [[ ! $(grep -q "/" <<< $f) && ! -d "$FILE_DIR" ]];then
             mkdir -p "$FILE_DIR" &> /dev/null
         fi
 
@@ -62,7 +62,7 @@ function update() {
 
         # Create directory, if it doesn't exist
         FILE_DIR="$(sed 's|\(.*\)/.*|\1|' <<< $f)"
-        if [ -d "$FILE_DIR" ] && [ !$(grep -q "/" $f) ];then
+        if [[ ! $(grep -q "/" <<< $f) && ! -d "$FILE_DIR" ]];then
             mkdir -p "$FILE_DIR" &> /dev/null
         fi
 
