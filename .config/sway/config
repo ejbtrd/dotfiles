@@ -265,16 +265,18 @@ gaps inner 10
 exec wl-paste -t text --watch clipman store --no-persist
 
 # Run some of the apps as floating by default
-for_window [app_id="Alacritty"]             floating enable
-for_window [app_id="pavucontrol"]           floating enable
-for_window [app_id="org.telegram.desktop"]  floating enable
-for_window [app_id="telegramdesktop"]       floating enable
-for_window [app_id="org.gnome.Nautilus"]    floating enable
-for_window [app_id="lutris"]                floating enable
-for_window [app_id="org.multimc.MultiMC"]   floating enable
-for_window [app_id="org.polymc.PolyMC"]     floating enable
-for_window [app_id="blueman-manager"]       floating enable
-for_window [class="Steam"]                  floating enable
+for_window {
+    [app_id="Alacritty"] floating enable
+    [app_id="pavucontrol"] floating enable
+    [app_id="org.telegram.desktop"] floating enable
+    [app_id="telegramdesktop"] floating enable
+    [app_id="org.gnome.Nautilus"] floating enable
+    [app_id="lutris"] floating enable
+    [app_id="org.multimc.MultiMC"] floating enable
+    [app_id="org.polymc.PolyMC"] floating enable
+    [app_id="blueman-manager"] floating enable
+    [class="Steam"] floating enable
+}
 
 # Assign Lutris & games to Workspace 3
 #assign [name="Wine System Tray"]		workspace number 3
