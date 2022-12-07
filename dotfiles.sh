@@ -3,7 +3,8 @@
 
 files=(
     ".config/sway/config"
-    ".config/sway/$HOSTNAME/config"
+    ".config/sway/snow/config"
+    ".config/sway/latitude/config"
     ".config/sway/sway-prop"
     ".config/waybar/config"
     ".config/waybar/style.css"
