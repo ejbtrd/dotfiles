@@ -6,6 +6,7 @@
 [core]
 	editor = nano
 [alias]
+	ca = commit --amend
 	cp = cherry-pick
 	c = commit
 	f = fetch

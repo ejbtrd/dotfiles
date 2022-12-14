@@ -275,6 +275,7 @@ for_window {
     [app_id="org.multimc.MultiMC"] floating enable
     [app_id="org.polymc.PolyMC"] floating enable
     [app_id="blueman-manager"] floating enable
+    [app_id="eog"] floating enable
     [class="Steam"] floating enable
 }
 
