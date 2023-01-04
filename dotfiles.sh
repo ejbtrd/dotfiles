@@ -5,6 +5,7 @@ files=(
     ".config/sway/config"
     ".config/sway/snow/config"
     ".config/sway/latitude/config"
+    ".config/sway/matebook/config"
     ".config/sway/sway-prop"
     ".config/waybar/config"
     ".config/waybar/style.css"
