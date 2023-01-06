@@ -97,7 +97,7 @@ input type:keyboard {
 
 input type:pointer {
     accel_profile "flat"
-    pointer_accel 0
+    pointer_accel 0.05
 }
 
 input type:touchpad {
@@ -276,6 +276,7 @@ for_window [app_id="org.polymc.PolyMC"]     floating enable
 for_window [app_id="blueman-manager"]       floating enable
 for_window [app_id="eog"]                   floating enable
 for_window [class="Steam"]                  floating enable
+for_window [class="discord"]                floating enable
 
 # Assign Lutris & games to Workspace 3
 #assign [name="Wine System Tray"]		workspace number 3
