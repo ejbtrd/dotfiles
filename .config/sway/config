@@ -259,7 +259,6 @@ bar {
 default_border none
 default_floating_border normal
 hide_edge_borders smart
-gaps inner 10
 
 # Clipman
 exec wl-paste -t text --watch clipman store --no-persist
@@ -278,6 +277,8 @@ for_window [app_id="eog"]                   floating enable
 for_window [class="Steam"]                  floating enable
 for_window [class="discord"]                floating enable
 for_window [class="ftb-app"]                floating enable
+for_window [class="Spotify"]                floating enable
+for_window [class="Anydesk"]                floating enable
 
 # Assign Lutris & games to Workspace 3
 #assign [name="Wine System Tray"]		workspace number 3
